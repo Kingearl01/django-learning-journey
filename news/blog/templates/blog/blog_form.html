@@ -1,0 +1,11 @@
+{% extends 'blog/layout.html' %}
+
+{% block main %}
+<h3>LIST OF BLOGS</h3>
+<form action="" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Update">
+</form>
+    
+{% endblock %}

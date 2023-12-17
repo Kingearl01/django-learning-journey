@@ -1,0 +1,61 @@
+.brand-name i {
+  color: #a9bf04;
+  font-style: normal;
+}
+
+.brand-name {
+  color: #e0e0e0;
+  font-size: 30px;
+  font-family: "Alfa Slab One", cursive;
+  /* font-family: Verdana, Arial, Helvetica, "Arial Black", "Helvetica Black", Gadget, sans-serif; */
+}
+
+nav .nav-link {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.software-info {
+  font-size: 0.7rem;
+  color: #fff;
+}
+
+.software-title {
+  font-size: 1.5rem;
+  color: #a9bf04;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    font-size: 50px;
+  }
+
+  .brand-name {
+    font-size: 50px;
+  }
+ 
+}
+
+@media screen and (max-width: 1182px) {
+  nav .nav-link {
+    font-size: 0.855rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  nav .nav-link {
+    font-size: 0.855rem;
+  }
+  .software-info {
+    color: #a9bf04;
+    font-size: 1rem;
+  }
+
+  .image {
+    background-color: #a9bf04;
+    width: auto;
+    height: auto;
+  }
+
+}
+

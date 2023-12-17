@@ -1,0 +1,115 @@
+{% extends 'blog/partials/base.html' %}
+
+{% block main %}
+<!--archive header-->
+<div class="archive-header text-center">
+    <div class="container">
+        <h2><span class="color3">{{category.name}}</span></h2>
+        <div class="breadcrumb">
+            <a href="{% url 'blog:home' %}" rel="nofollow">Home</a>
+            <span></span> {{category.name}}
+        </div>
+        <div class="bt-1 border-color-1 mt-30 mb-50"></div>
+    </div>
+</div>
+<!--main content-->
+<div class="main_content sidebar_right pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">                   
+                
+                <!--loop-list-->
+                <div class="loop-grid row">
+                    {% for post in posts %}
+                    <article class="col-lg-6 mb-50 animate-conner">
+                        <div class="post-thumb d-flex mb-30 border-radius-5 img-hover-scale animate-conner-box">
+                            <a href="{{post.get_absolute_url}}">
+                                <img src="{{post.thumbnail.url}}" alt="">
+                            </a>
+                            <span class="top-right-icon background8"><i class="mdi mdi-flash-on"></i></span>
+                            <ul class="social-share">
+                                <li><a href="#"><i class="ti-sharethis"></i></a></li>
+                                <li><a class="fb" href="#" title="Share on Facebook" target="_blank"><i
+                                            class="ti-facebook"></i></a></li>
+                                <li><a class="tw" href="#" target="_blank" title="Tweet now"><i
+                                            class="ti-twitter-alt"></i></a></li>
+                                <li><a class="pt" href="#" target="_blank" title="Pin it"><i
+                                            class="ti-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="post-content">
+                            <div class="entry-meta meta-0 font-small mb-15">
+                                <a href="{% url 'blog:category' post.category.slug %}"><span class="post-cat background{{post.category.id}} color-white">{{post.category}}</span></a>
+                            </div>
+                            <h3 class="post-title">
+                                <a href="{{post.get_absolute_url}}">
+                                    {{post.title|truncatewords:9}}</a>
+                            </h3>
+                            <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                                <span class="post-by">By <a href="{{post.author.get_author_url}}">{{post.author.name}}</a></span>
+                                <span class="post-on has-dot">{{post.date_created|date}}</span>
+                                <span class="time-reading has-dot">8 mins read</span>
+                                <span class="hit-count"><i class="ti-bolt"></i> 129k Views</span>
+                            </div>
+                            <div class="post-excerpt mb-25">
+                                <p>{{post.body|safe|truncatewords:24}}</p>
+                            </div>
+                        </div>
+                    </article>
+                    {% empty %}
+                    <div>
+                        NO POST AVAILABLE
+                    </div>
+
+                    {% endfor %}
+                </div>
+ 
+                <!--pagination-->
+                {% if posts.has_other_pages %}
+                <div class="pagination-area pt-30 text-center bt-1 border-color-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="single-wrap d-flex justify-content-center">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-start">
+                                            {% if posts.has_previous %}
+                                            <li class="page-item"><a class="page-link" href="?page={{posts.previous_page_number}}"><i
+                                                        class="flaticon-left"></i> </a></li>
+                                            {% else %}
+                                            <li class="page-item disabled"><a class="page-link"><i
+                                                class="flaticon-left"></i> </a></li>
+                                            {% endif %}
+                                            {% for i in posts.paginator.page_range %}
+                                            {% if posts.number == i %}
+                                            <li class="page-item active"><a class="page-link" >{{ i }} <span class="sr-only">(current)</span></a></li>
+
+                                            {% else %}
+                                               
+                                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                                
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% if posts.has_next %}
+                                            <li class="page-item"><a class="page-link" href="?page={{posts.next_page_number}}"><i
+                                                        class="flaticon-right"></i> </a></li>
+                                            {% else %}
+                                            <li class="page-item disabled"><a class="page-link"><i
+                                                class="flaticon-right"></i> </a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                {% endif %}
+            </div>
+             <!-- aside -->
+           {% include 'blog/partials/aside.html'   %}
+        </div>
+    </div>
+</div>
+{% endblock %}

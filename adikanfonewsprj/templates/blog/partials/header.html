@@ -1,0 +1,127 @@
+{% load static %}
+
+<header class="main-header header-style-2 header-style-3">
+    <div class="top-bar background4 d-none d-md-block color-white">
+        <div class="container">
+            <div class="topbar-inner pt-10 pb-10">
+                <div class="row">
+                    <div class="col-6">
+                        <div id="datetime" class="d-inline-block">
+                            <ul>
+                                <li>
+                                    <span class="font-small"><i class="ti-calendar mr-5"></i>
+                                        {% now "D jS F Y" %}
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="color-white" href="#"><span class="font-small"><i
+                                                class="ti-book mr-5"></i>Read Today’s Paper</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <ul class="header-social-network d-inline-block list-inline color-white">
+                            <li class="list-inline-item">
+                                <a class="social-icon facebook-icon text-xs-center color-white" target="_blank"
+                                    href="#"><i class="ti-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-icon twitter-icon text-xs-center color-white" target="_blank"
+                                    href="#"><i class="ti-twitter-alt"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-icon pinterest-icon text-xs-center color-white" target="_blank"
+                                    href="#"><i class="ti-pinterest"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-icon instagram-icon text-xs-center color-white" target="_blank"
+                                    href="#"><i class="ti-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End top bar-->
+    <!--End top bar-->
+    <div class="header-logo background-white pt-20 pb-20 d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 align-center-vertical">
+                    <a href="{% url 'blog:home' %}">
+                        <img class="logo-img d-inline" src="{% static 'blog/imgs/adikanfoNews.png' %}" alt="" />
+                    </a>
+                </div>
+                <div class="col-lg-8 col-md-12 align-center-vertical d-none d-lg-inline text-right">
+                    <a href="#">
+                        <img class="ads-img d-inline" src="{% static 'blog/imgs/ads-3.jpg' %}" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End logo-->
+    <div class="header-bottom header-sticky background-white text-center">
+        <div class="mobile_menu d-lg-none d-block"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="logo-tablet d-md-inline d-lg-none d-none">
+                        <a href="{% url 'blog:home' %}">
+                            <img class="logo-img d-inline" src="{% static 'blog/imgs/adikanfoNews.png' %}" alt="" />
+                        </a>
+                    </div>
+                    <div class="logo-mobile d-inline d-md-none">
+                        <a href="{% url 'blog:home' %}">
+                            <img class="logo-img d-inline" src="{% static 'blog/imgs/adikanfoNews.png' %}" alt="" />
+                        </a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div class="main-nav text-left d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation" class="main-menu">
+                                <li class="">
+                                    <a href="{% url 'blog:home' %}">Home</a>
+                                </li>
+
+                                <li><a href="/category/news/">News</a></li>
+
+                                <li class="menu-item-has-children">
+                                    <a href="/category/education/">Education</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/category/pre-tertiary/">Pre-tertiary</a></li>
+                                        <li><a href="/category/coe/">COE</a></li>
+                                        <li><a href="/category/university/">University</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/category/campus-news/">Campus News</a></li>
+                                <li><a href="/category/sport/">Sports</a></li>
+                                <li><a href="/category/showbiz/">Showbiz</a></li>
+                                <li><a href="/category/politics/">Politics</a></li>
+
+                                <li class="menu-item-has-children">
+                                    <a href="#">More</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/category/opinion/"> Opinion</a></li>
+                                        <li><a href="/category/lifestyle/"> Health & lifestyle</a></li>
+                                        <li><a href="/category/resources/"> Resources</a></li>
+                                        <li><a href="/category/contact/">Contact</a></li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Search -->
+                    <div class="search-button">
+                        <button class="search-icon"><i class="ti-search"></i></button>
+                        <span class="search-close float-right font-small"><i class="ti-close mr-5"></i>CLOSE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

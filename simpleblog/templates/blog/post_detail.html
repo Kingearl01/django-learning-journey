@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block main %}
+<a href="{% url 'blog:home' %}" class="btn btn-primary">Home</a>
+    
+        <h3><a href="">{{post.title}}</a> by {{post.author}}</h3>
+        <p>{{post.body}}</p>
+        {{post.get_delete_url}}
+        <a href="{{post.get_update_url}}">Update Post</a>
+        <a href="{{post.get_delete_url}}">Delete Post</a>
+{% endblock %}

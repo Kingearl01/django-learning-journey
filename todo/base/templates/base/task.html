@@ -1,0 +1,17 @@
+{% extends 'base/layout.html' %}
+<a href="{% url 'tasks' %}">Back</a>
+
+
+{% block main %}
+<h3 class="mt-5">{{task.title}}</h3>
+
+<p>{{task.description}}</p>
+{% if task.complete %}
+<p>Not Completed {{task.created}}</p>
+{% else %}
+<p>Completed {{task.created}}</p>
+{% endif %}
+
+{% endblock %}
+
+

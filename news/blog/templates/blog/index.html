@@ -1,0 +1,10 @@
+{% extends 'blog/layout.html' %}
+
+{% block main %}
+<h3>LIST OF BLOGS</h3>
+<a href="{% url 'add' %}">Add Blog</a>
+    {% for blog in blogs %}
+ 
+        <a href="{% url 'detail' blog.id %}"><p>{{blog.title}}</p></a>
+    {% endfor %}
+{% endblock %}

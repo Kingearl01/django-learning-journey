@@ -1,0 +1,69 @@
+{% extends 'portal/partials/base.html' %}
+
+{% block content %}
+<section class="content">
+  <div class="row">
+    <div class="table-responsive-sm">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Course title</th>
+            <th scope="col">Credit</th>
+            <th scope="col">Grade</th>
+            <!-- <th scope="col">Grade Point</th> -->
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          {% for result in results %}
+          <tr>
+            <th scope="row">{{result.course.course_code}}</th>
+            <td>{{result.course.course_title}}</td>
+            <td>{{result.course.credit}}</td>
+
+            {% if result.grade == '4.0' %}
+            <td>A</td>
+              
+            {% elif result.grade == '3.5' %}
+              <td>B+</td>
+              {% elif result.grade == '3.0' %}
+              <td>B</td>
+              {% elif result.grade == '2.5' %}
+              <td>C+</td>
+              {% elif result.grade == '2.0' %}
+              <td>C</td>
+              {% elif result.grade == '1.5' %}
+              <td>D+</td>
+              {% elif result.grade == '1.0' %}
+              <td>D</td>
+              {% elif result.grade == '0.5' %}
+              <td>E</td>
+              {% elif result.grade == '0.0' %}
+              <td>F</td>
+              
+            {% endif %}
+            
+           {% empty %}
+           <h1>No Result Availble at the Moment</h1>
+          {% endfor %}
+         
+          
+        </tbody>
+      </table>
+        
+      <table class="table">
+        <tr>
+          <th><abbr title="Total Credit">TCR:</abbr> {{TCR}}</th>
+          <th><abbr title="Total Grade Point">TGP</abbr> {{ TGP }}</th>
+          <th><abbr title="Semester Grade Point Average">SGPA</abbr>: {{SGPA|floatformat:2}}</th>
+          <th class="text-danger"><abbr title="Cumulative Credit">CCR</abbr>: {{ CCR }}</th>
+          <th class="text-danger"><abbr title="Cumulative Grade Point">CGV</abbr>: {{CGV}}</th>
+          <th class="text-danger"><abbr title="Cumulative Grade Point Average">CGPA</abbr>: {{CGPA|floatformat:2}}</th>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+</section>
+{% endblock %}

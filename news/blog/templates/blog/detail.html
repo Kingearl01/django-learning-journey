@@ -1,0 +1,9 @@
+{% extends 'blog/layout.html' %}
+
+{% block main %}
+<a href="{% url 'home' %}">BACK</a>
+    <p>{{blogs.title}}</p>
+    <p>{{blogs.body}}</p>
+    <a href="{% url 'update' blogs.pk %}">Update Blog</a>
+    <a href="{% url 'delete' blogs.pk %}">Delete Blog</a>
+{% endblock %}

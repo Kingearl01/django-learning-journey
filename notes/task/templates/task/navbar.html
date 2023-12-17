@@ -1,0 +1,36 @@
+<style>
+   nav ul  {
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5em 2em;
+
+    }
+  li  a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    li {
+        list-style: none;
+    }
+
+
+</style>
+
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <!-- <li><a href="{% url 'home' %}">Home</a></li> -->
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'home' %}">{{request.user}}</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+        
+    </ul>
+</nav>
+<hr>

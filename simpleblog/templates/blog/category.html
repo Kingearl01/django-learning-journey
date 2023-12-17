@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block main %}
+<a href="{% url 'blog:home' %}" class="btn btn-primary">Home</a>
+    
+        <h3>List of {{catlist.cat}} posts</h3>
+        
+        {% for post in catlist.posts %}
+        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+            
+            
+        {% endfor %}
+{% endblock %}

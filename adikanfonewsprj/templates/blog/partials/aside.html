@@ -1,0 +1,138 @@
+<!--Right sidebar-->
+<div class="col-lg-4 col-md-12 col-sm-12 primary-sidebar sticky-sidebar">
+    <div class="widget-area pl-30">
+
+        <!--Widget social-->
+        <div class="sidebar-widget widget-social-network mb-50">
+            <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Follow Us</h5>
+                <div class="bt-1 border-color-1"></div>
+            </div>
+            <div class="social-network">
+                <div class="follow-us d-flex align-items-center">
+                    <a class="follow-us-facebook clearfix mr-5 mb-10" href="#" target="_blank">
+                        <div class="social-icon">
+                            <i class="ti-facebook mr-5 v-align-space"></i>
+                            <i class="ti-facebook mr-5 v-align-space nth-2"></i>
+                        </div>
+                        <span class="social-name">Facebook</span>
+                        <span class="social-count counter-number">65</span><span class="social-count">K</span>
+                    </a>
+                    <a class="follow-us-twitter clearfix ml-5 mb-10" href="#" target="_blank">
+                        <div class="social-icon">
+                            <i class="ti-twitter-alt mr-5 v-align-space"></i>
+                            <i class="ti-twitter-alt mr-5 v-align-space nth-2"></i>
+                        </div>
+                        <span class="social-name">Twitter</span>
+                        <span class="social-count counter-number">75</span><span class="social-count">K</span>
+                    </a>
+                </div>
+                <div class="follow-us d-flex align-items-center">
+                    <a class="follow-us-instagram clearfix mr-5" href="#" target="_blank">
+                        <div class="social-icon">
+                            <i class="ti-instagram mr-5 v-align-space"></i>
+                            <i class="ti-instagram mr-5 v-align-space nth-2"></i>
+                        </div>
+                        <span class="social-name">Instagram</span>
+                        <span class="social-count counter-number">32</span><span class="social-count">K</span>
+                    </a>
+                    <a class="follow-us-youtube clearfix ml-5" href="#" target="_blank">
+                        <div class="social-icon">
+                            <i class="ti-youtube mr-5 v-align-space"></i>
+                            <i class="ti-youtube mr-5 v-align-space nth-2"></i>
+                        </div>
+                        <span class="social-name">Youtube</span>
+                        <span class="social-count counter-number">28</span><span class="social-count">K</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--Widget latest posts style 1-->
+        <div class="sidebar-widget widget_alitheme_lastpost mb-50">
+            <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Latest Posts</h5>
+                <div class="bt-1 border-color-1"></div>
+            </div>
+            <div class="row">
+                {% for post in latest_posts %}
+
+                <div class="col-md-6 col-sm-6 sm-grid-content mb-30">
+                    <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                        <a href="{{post.get_absolute_url}}">
+                            <img src="{{post.thumbnail.url}}" alt="" />
+                        </a>
+                    </div>
+                    <div class="post-content media-body">
+                        <h6 class="post-title mb-10 text-limit-2-row">
+                            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                        </h6>
+                        <div class="entry-meta meta-1 font-x-small color-grey">
+                            <span class="post-on">{{post.date_created|date}}</span>
+                            <span class="hit-count has-dot">126k Views</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!--Widget categories-->
+        <div class="sidebar-widget widget_categories mb-50">
+            <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Category </h5>
+                <div class="bt-1 border-color-1"></div>
+            </div>
+            <div class="post-block-list post-module-1 post-module-5">
+                <ul>
+                    {% for cat in categories %}
+                    <li class="cat-item cat-item-2">
+                        <a href="{{cat.get_category_url}}">{{cat.name}}</a> {{cat.post_count}}
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+        <!--Widget latest posts style 2-->
+        <div class="sidebar-widget widget_alitheme_lastpost mb-50">
+            <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Trending Posts</h5>
+                <div class="bt-1 border-color-1"></div>
+            </div>
+            <div class="post-block-list">
+                {% for post in tranding_post %}
+                <article class="mb-30">
+                    <div class="post-thumb position-relative thumb-overlay mb-30">
+                        <div class="img-hover-slide border-radius-5 position-relative" style="
+          background-image: url({{post.thumbnail.url}}); 
+          
+        ">
+                            <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                            <span class="top-right-icon background8"><i class="mdi mdi-camera-alt"></i></span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="entry-meta meta-0 font-small mb-15">
+                            <a href="category.html"><span
+                                    class="post-cat background9 color-white">{{post.category}}</span></a>
+                        </div>
+                        <h4 class="post-title">
+                            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                        </h4>
+                        <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                            <span claRss="post-on">{{post.date_created|date}}</span>
+                            <span class="time-reading has-dot">12 mins read</span>
+                            <span class="hit-count"><i class="ti-bolt"></i> {{post.view_count}}k
+                                Views</span>
+                        </div>
+                    </div>
+                </article>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--End sidebar-->

@@ -1,0 +1,10 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+<h3 class="container mt-3">Log In</h3>
+<form action="" method="post" class="container">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-primary" type="submit" value="Login">
+</form>
+{% endblock %}

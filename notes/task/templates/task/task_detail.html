@@ -1,0 +1,23 @@
+{% extends 'task/layout.html' %}
+<!-- Titlw -->
+{% block title %}
+    <title>Task: Detail</title>
+{% endblock %}
+
+<!-- main content -->
+{% block main %}
+<h2>TASK DETAILS</h2>
+<hr>
+<a href="{% url 'home' %}">Back</a> <br>
+<hr>
+<p>{{task.title}} -- {{task.date_posted}}</p>
+<hr>
+<p>{{task.description}}</p>
+
+{% if task.status %}
+    <p>Task Completed</p>
+{% else %}
+<p>Task Not Completed</p>
+{% endif %}
+<a href="{% url 'delete' task.id %}">Delete</a>
+{% endblock %}

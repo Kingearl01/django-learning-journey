@@ -1,0 +1,497 @@
+{% extends 'blog/partials/base.html' %}
+
+{% block main %}
+
+<!--latest post Start-->
+<div class="home-featured">
+    <div class="post-carausel-3 post-module-1">
+        {% for post in latest_posts %}
+        <div class="post-thumb position-relative">
+            <div class="thumb-overlay img-hover-slide position-relative"
+                style="background-image: url({{post.thumbnail.url}})">
+                <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                <div class="post-content-overlay ml-30 mr-30">
+                    <div class="entry-meta meta-0 font-small mb-20">
+                        <a href="{{post.category.get_category_url}}"><span
+                                class="post-cat background2 color-white">{{post.category}}</span></a>
+                    </div>
+                    <h3 class="post-title">
+                        <a class="color-white" href="">{{post.title}}</a>
+                    </h3>
+                    <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
+                        <span class="post-on">{{post.date_created|date}}</span>
+                        <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                        <a class="float-right" href="#"><i class="ti-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+<!--latest post End-->
+<!-- featured Posts Start -->
+<div class="pt-50 pb-50 background-white">
+    <div class="container mb-50">
+        <div class="sidebar-widget loop-grid">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <div class="widget-header position-relative mb-30">
+                        <h5 class="widget-title mb-30 text-uppercase color4 font-weight-ultra">Featured
+                            Posts</h5>
+                        <div class="letter-background">News</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="pt-30 bt-1 border-color-1"></div>
+                </div>
+                {% for post in featured_posts %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                    <div class="post-thumb position-relative thumb-overlay hover-box-shadow-2 mb-30">
+                        <div class="img-hover-slide border-radius-5 position-relative"
+                            style="background-image: url({{post.thumbnail.url}})">
+                            <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                            <span class="top-right-icon background5"><i class="mdi mdi-favorite"></i></span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="entry-meta meta-0 font-small mb-15">
+                            <a href="{{post.category.get_category_url}}"><span
+                                    class="post-cat background{{post.category.id}} color-white">{{post.category.name}}</span></a>
+                        </div>
+                        <h4 class="post-title">
+                            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                        </h4>
+                        <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                            <span class="post-on">{{post.date_created|date}}</span>
+                            <span class="time-reading has-dot">10 mins read</span>
+                            <span class="hit-count"><i class="ti-bolt"></i> {{post.view_count}}k Views</span>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <div class="col-12">
+                    <div class="mt-30 bt-1 border-color-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar-widget">
+            <div class="widget-header position-relative mb-30">
+                <h5 class="widget-title mb-30 text-uppercase color1 font-weight-ultra">Most Read</h5>
+                <div class="letter-background">M</div>
+            </div>
+            <div class="post-carausel-2 post-module-1 row">
+                {% for post in trending_posts %}
+                <div class="col">
+                    <div class="post-thumb position-relative">
+                        <div class="thumb-overlay img-hover-slide border-radius-5 position-relative"
+                            style="background-image: url({{post.thumbnail.url}})">
+                            <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                            <div class="post-content-overlay">
+                                <div class="entry-meta meta-0 font-small mb-10">
+                                    <a href="{{post.category.get_category_url}}"><span
+                                            class="post-cat background{{post.category.id}} color-white">{{post.category.name}}</span></a>
+                                </div>
+                                <h6 class="post-title">
+                                    <a class="color-white" href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                </h6>
+                                <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
+                                    <span class="post-on">{{post.date|date}}</span>
+                                    <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                                    <a class="float-right" href="#"><i class="ti-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Recent Posts End -->
+<!-- Start Youtube -->
+<div class="video-area background_dark area-padding pt-50 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sidebar-widget">
+                    <div class="widget-header position-relative mb-30">
+                        <div class="row">
+                            <div class="col-7">
+                                <h5 class="widget-title text-uppercase color4 font-weight-ultra">LATEST
+                                    VIDEOS</h5>
+                                <div class="letter-background">IN MOTION</div>
+                            </div>
+                            <div class="col-5 text-right">
+                                <h6 class="text-uppercase font-medium">
+                                    <i class="ti-video-clapper color-white mr-5"></i>
+                                    <a class="color-white" href="/category/video/">All Videos</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-tab-item post-module-1 post-module-4 mt-50">
+                        <div class="row">
+                            {%for post in video_posts %}
+                            {% if forloop.first %}
+                            <div class="col-lg-5 col-md-6">
+                                <div class="post-thumb position-relative">
+                                    <div class="thumb-overlay img-hover-slide border-radius-5 position-relative" style="background-image: url({{post.thumbnail.url}})
+                                            
+                                            ">
+                                        <span class="top-right-icon background{{post.category.id}}"><i
+                                                class="mdi mdi-favorite"></i></span>
+                                        <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                                        <div class="post-content-overlay">
+                                            <div class="entry-meta meta-0 font-small mb-20">
+                                                <a href="{{post.category.get_category_url}}"><span
+                                                        class="post-cat background{{post.category.id}} color-white">{{post.category.name}}</span></a>
+                                            </div>
+                                            <h2 class="post-title">
+                                                <a class="color-white"
+                                                    href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                            </h2>
+                                            <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
+                                                <span class="post-on">{{post.date_created|date}}</span>
+                                                <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                                                <a class="float-right" href="#"><i class="ti-heart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="play_btn">
+                                            <a class="play-video" data-animate="zoomIn" data-duration="1.5s"
+                                                data-delay="0.1s">
+                                                <i class="ti-control-play"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% elif forloop.last %}
+                            <div class="col-lg-7 col-md-6">
+                                <div class="row">
+                                    {% for post in video_posts %}
+                                    {% if forloop.first %}
+                                    {% else %}
+                                    <div class="slider-single col-lg-4 col-md-6 d-none d-lg-block">
+                                        <div class="img-hover-scale border-radius-5">
+                                            <a href="{{post.get_absolute_url}}">
+                                                <img class="border-radius-5" src="{{post.thumbnail.url}}"
+                                                    alt="{{post.title}}">
+                                            </a>
+                                            <div class="play_btn play_btn_small">
+                                                <a class="play-video" data-animate="zoomIn" data-duration="1.5s"
+                                                    data-delay="0.1s">
+                                                    <i class="ti-control-play"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <h6 class="post-title pr-5 pl-5 mb-10 mt-15 text-limit-2-row">
+                                            <a class="color-white" href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                        </h6>
+                                        <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
+                                            <span class="post-on">{{post.date_created|date}}</span>
+                                            <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                                            <a class="float-right" href="#"><i class="ti-heart"></i></a>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Start youtube -->
+
+<div class="recent-area pt-50 pb-50 background12">
+    <div class="container">
+        <!--Editor's Picked Start-->
+        <div class="widgets-post-carausel-1 mb-60">
+            <div class="post-carausel-1 border-radius-10 bg-white">
+                <div class="row no-gutters">
+                    <div class="col col-1-5 background6 editor-picked-left d-none d-lg-block">
+                        <div class="editor-picked">
+                            <h4>Editor's Picked</h4>
+                            <p class="font-medium color-grey mt-20 mb-30">The featured articles are selected
+                                by experienced editors. It is also based on the reader's rating. These posts
+                                have a lot of interest.</p>
+                            <div class="post-carausel-1-arrow"></div>
+                        </div>
+                    </div>
+                    <div class="col col-4-5 col-md-12">
+                        <div class="post-carausel-1-items row">
+                            {% for post in featured_posts %}
+                            <div class="slider-single col">
+                                <h6 class="post-title pr-5 pl-5 mb-10 text-limit-2-row"><a
+                                        href="{{post.get_absolute_url}}">{{post.title}}</a></h6>
+                                <div class="img-hover-scale border-radius-5 hover-box-shadow">
+                                    <span class="top-right-icon background2">
+                                        <i class="mdi mdi-favorite"></i>
+                                    </span>
+                                    <a href="{{post.get_absolute_url}}"><img class="border-radius-5"
+                                            src="{{post.thumbnail.url}}" alt="{{post.title}}"></a>
+                                </div>
+                                <div class="entry-meta meta-1 font-small color-grey mt-10 pr-5 pl-5">
+                                    <span class="post-on">{{post.date_created|date}}</span>
+                                    <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                                    <a class="float-right" href="#"><i class="ti-heart"></i></a>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                            <!--end slider single-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Editor's Picked End-->
+
+        <!-- Recent post -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="widget-header position-relative mb-30">
+                    <h5 class="widget-title mb-30 text-uppercase color1 font-weight-ultra">Recent Posts</h5>
+                    <div class="letter-background">Latest</div>
+                </div>
+                <div class="loop-list">
+                    {% for post in recent_posts %}
+                    <article class="row mb-50">
+                        <div class="col-md-6">
+                            <div class="post-thumb position-relative thumb-overlay mr-20">
+                                <div class="img-hover-slide border-radius-5 position-relative" style="background-image: url({{post.thumbnail.url}})
+                                    
+                                    ">
+                                    <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                                    <span class="top-right-icon background8"><i class="mdi mdi-favorite"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 align-center-vertical">
+                            <div class="post-content">
+                                <div class="entry-meta meta-0 font-small mb-15"><a
+                                        href="{{post.category.get_category_url}}"><span
+                                            class="post-cat background2 color-white">{{post.category.name}}</span></a>
+                                </div>
+                                <h4 class="post-title">
+                                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                </h4>
+                                <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                                    <span class="post-on"><i class="ti-marker-alt"></i>{{post.date_created|date}}</span>
+                                    <span class="time-reading"><i class="ti-timer"></i>10 mins read</span>
+                                    <span class="hit-count"><i class="ti-bolt"></i> {{post.view_count}}k Views</span>
+                                </div>
+                                <p class="font-medium">{{post.body|safe|truncatewords:5}}</p>
+                                <a class="readmore-btn font-small text-uppercase font-weight-ultra"
+                                    href="{{post.get_absolute_url}}">Read
+                                    More<i class="ti-arrow-right ml-5"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="widget-area">
+                    <!-- Social Network -->
+                    <div class="sidebar-widget widget-social-network mb-30">
+                        <div class="widget-header position-relative mb-30">
+                            <h5 class="widget-title mt-5 mb-30">Follow Us</h5>
+                        </div>
+                        <div class="social-network">
+                            <div class="follow-us d-flex align-items-center">
+                                <a class="follow-us-facebook clearfix mr-5 mb-10" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-facebook mr-5 v-align-space"></i>
+                                        <i class="ti-facebook mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Facebook</span>
+                                    <span class="social-count counter-number">65</span><span
+                                        class="social-count">K</span>
+                                </a>
+                                <a class="follow-us-twitter clearfix ml-5 mb-10" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-twitter-alt mr-5 v-align-space"></i>
+                                        <i class="ti-twitter-alt mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Twitter</span>
+                                    <span class="social-count counter-number">75</span><span
+                                        class="social-count">K</span>
+                                </a>
+                            </div>
+                            <div class="follow-us d-flex align-items-center">
+                                <a class="follow-us-instagram clearfix mr-5" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-instagram mr-5 v-align-space"></i>
+                                        <i class="ti-instagram mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Instagram</span>
+                                    <span class="social-count counter-number">32</span><span
+                                        class="social-count">K</span>
+                                </a>
+                                <a class="follow-us-youtube clearfix ml-5" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-youtube mr-5 v-align-space"></i>
+                                        <i class="ti-youtube mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Youtube</span>
+                                    <span class="social-count counter-number">28</span><span
+                                        class="social-count">K</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--taber-->
+                    <div class="sidebar-widget widget-taber mb-30">
+                        <div class="widget-taber-content background-white pt-30 pb-30 pl-30 pr-30 border-radius-5">
+                            <nav class="tab-nav float-none mb-20">
+                                <div class="nav nav-tabs" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-popular-tab" data-toggle="tab"
+                                        href="#nav-popular" role="tab" aria-controls="nav-popular"
+                                        aria-selected="true">Popular</a>
+                                    <a class="nav-item nav-link" id="nav-trending-tab" data-toggle="tab"
+                                        href="#nav-trending" role="tab" aria-controls="nav-trending"
+                                        aria-selected="false">Trending</a>
+                                    <a class="nav-item nav-link" id="nav-comment-tab" data-toggle="tab"
+                                        href="#nav-comment" role="tab" aria-controls="nav-comment"
+                                        aria-selected="false">Comments</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content">
+                                <!--Tab Popular-->
+                                <div class="tab-pane fade show active" id="nav-popular" role="tabpanel"
+                                    aria-labelledby="nav-popular-tab">
+                                    <div class="post-block-list post-module-1">
+                                        <ul class="list-post">
+                                            {% for post in popular_posts %}
+                                            <li class="mb-30">
+                                                <div class="d-flex">
+                                                    <div
+                                                        class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
+                                                        <a href="{{post.get_absolute_url}}">
+                                                            <img src="{{post.thumbnail.url}}" alt="{{post.title}}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content media-body">
+                                                        <div class="entry-meta meta-0 mb-10">
+                                                            <a href="{{post.category.get_category_url}}"><span
+                                                                    class="post-in background{{post.category.id}} color-white font-small">{{post.category.name}}</span></a>
+                                                        </div>
+                                                        <h6 class="post-title mb-10 text-limit-2-row">
+                                                            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                                        </h6>
+                                                        <div class="entry-meta meta-1 font-x-small color-grey">
+                                                            <span class="post-on">{{post.date_created|date}}</span>
+                                                            <span class="hit-count has-dot">{{post.view_count}}k
+                                                                Views</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            {% endfor %}
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--Tab Trending-->
+                                <div class="tab-pane fade" id="nav-trending" role="tabpanel"
+                                    aria-labelledby="nav-trending-tab">
+                                    <div class="row">
+                                        {% for post in trending_posts %}
+                                        <div class="col-md-6 col-sm-6 sm-grid-content">
+                                            <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                <a href="{{post.get_absolute_url}}">
+                                                    <img src="{{post.thumbnail.url}}" alt="{{post.title}}">
+                                                </a>
+                                            </div>
+                                            <div class="post-content media-body">
+                                                <h6 class="post-title mb-10 text-limit-2-row"><a
+                                                        href="{{post.get_absolute_url}}">{{post.title}}</a></h6>
+                                                <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                    <span class="post-on">{{post.date_created|date}}</span>
+                                                    <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+
+
+                                    </div>
+                                </div>
+                                <!--Tab Comments-->
+                                <div class="tab-pane fade" id="nav-comment" role="tabpanel"
+                                    aria-labelledby="nav-comment-tab">
+                                    <div class="post-block-list post-module-1">
+                                        <ul class="list-post">
+                                            {% for post in popular_posts %}
+                                            <li class="">
+                                                <div class="d-flex">
+                                                    <div
+                                                        class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
+                                                        <a href="{{post.get_absolute_url}}">
+                                                            <img src="{{post.thumbnail.url}}" alt="{{post.title}}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content media-body">
+                                                        <div class="entry-meta meta-0 mb-10">
+                                                            <a href="{{post.category.get_category_url}}"><span
+                                                                    class="post-in background{{post.category.id}} color-white font-small">{{post.category.name}}</span></a>
+                                                        </div>
+                                                        <h6 class="post-title mb-10 text-limit-2-row">
+                                                            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                                        </h6>
+                                                        <div class="entry-meta meta-1 font-x-small color-grey">
+                                                            <span class="post-on">{{post.date_created|date}}</span>
+                                                            <span class="hit-count has-dot">{{post.view_count}}k
+                                                                Views</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ads -->
+                    <div class="sidebar-widget widget-ads mb-30 text-center">
+
+                        <img class="d-inline-block" src="{% static 'blog/imgs/ads-2.jpg'}"
+                            alt="advert area">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Recent Articles End -->
+{% endblock %}

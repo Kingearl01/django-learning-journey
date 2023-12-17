@@ -1,0 +1,131 @@
+{% extends 'blog/partials/base.html' %}
+
+{% load static %}
+{% block main %}
+<!--main content-->
+<div class="main_content sidebar_right pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--author box-->
+                <div class="author-bio mb-50">
+                    <div class="author-image mb-30">
+                        <a href=""><img src="{% if author.imageURL == '' %} {% static 'blog/imgs/dp.png' %} {% endif %}{{author.imageURL}} " alt="" class="avatar"></a>
+                    </div>
+                    <div class="author-info">
+                        <h3><span class="vcard author"><span class="fn"><a href="" title="Posts by {{author}}"
+                                        rel="author">{{author}}</a></span></span>
+                        </h3>
+                        <h5>About author</h5>
+                        <div class="author-description">{{author.description}}</div>
+                        <!-- <a href=""  class="author-bio-link mb-15">View all posts</a> -->
+                        <div class="author-social">
+                            <ul class="author-social-icons">
+                                <li class="author-social-link-facebook"><a href="#" target="_blank"><i
+                                            class="ti-facebook"></i></a></li>
+                                <li class="author-social-link-twitter"><a href="#" target="_blank"><i
+                                            class="ti-twitter-alt"></i></a></li>
+                                <li class="author-social-link-pinterest"><a href="#" target="_blank"><i
+                                            class="ti-pinterest"></i></a></li>
+                                <li class="author-social-link-instagram"><a href="#" target="_blank"><i
+                                            class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="related-posts">
+                    <div class="loop-list">
+                        {% for post in posts %}
+                        <article class="row mb-30">
+                            <div class="col-md-4">
+                                <div class="post-thumb position-relative thumb-overlay">
+
+                                    <div class="img-hover-slide border-radius-5 position-relative" style="background-image: url({{post.thumbnail.url}})"
+                                          >
+                                              <a class=" img-link" href="{{post.get_absolute_url}}"></a>
+                                        <span class="top-right-icon background{{post.category.id}}"><i
+                                                class="mdi mdi-flash-on"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 align-center-vertical">
+                                <div class="post-content">
+                                    <div class="entry-meta meta-0 font-small mb-15">
+                                        <a href="{{post.category.get_category_url}}"><span
+                                                class="post-cat background{{post.category.id}} color-white">{{post.category}}</span></a>
+                                    </div>
+                                    <h4 class="post-title">
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                    </h4>
+                                    <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                                        <span class="post-on"><i
+                                                class="ti-marker-alt"></i>{{post.date_created|date}}</span>
+                                        <span class="time-reading"><i class="ti-timer"></i>10 mins read</span>
+                                        <span class="hit-count"><i class="ti-bolt"></i> {{post.view_count}}k
+                                            Views</span>
+                                    </div>
+                                    <p class="font-medium">
+                                        {{post.body|safe|truncatewords:24}}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+                {% if posts.has_other_pages %}
+                <div class="pagination-area pt-30 text-center bt-1 border-color-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="single-wrap d-flex justify-content-center">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-start">
+                                            {% if posts.has_previous %}
+                                            <li class="page-item"><a class="page-link" href="?page={{posts.previous_page_number}}"><i
+                                                        class="flaticon-left"></i> </a></li>
+                                            {% else %}
+                                            <li class="page-item disabled"><a class="page-link"><i
+                                                class="flaticon-left"></i> </a></li>
+                                            {% endif %}
+                                            {% for i in posts.paginator.page_range %}
+                                            {% if posts.number == i %}
+                                            <li class="page-item active"><a class="page-link" >{{ i }} <span class="sr-only">(current)</span></a></li>
+
+                                            {% else %}
+                                               
+                                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                                
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% if posts.has_next %}
+                                            <li class="page-item"><a class="page-link" href="?page={{posts.next_page_number}}"><i
+                                                        class="flaticon-right"></i> </a></li>
+                                            {% else %}
+                                            <li class="page-item disabled"><a class="page-link"><i
+                                                class="flaticon-right"></i> </a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                {% endif %}
+            </div>
+            <!--col-lg-8-->
+            <!-- aside -->
+            {% include 'blog/partials/aside.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<!-- header -->
+{% include 'portal/partials/header.html'   %}
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+
+
+{% include 'portal/partials/navbar.html'   %}
+{% include 'portal/partials/sidebar.html'   %}
+   
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+
+        <h1 class="text-center text-danger">
+          {{ class_designation }}
+        </h1>
+        
+        <ol class="breadcrumb">
+          <li><a href="{% url 'portal:home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Result</li>
+        </ol>
+      </section>
+      {% block content %}
+        
+      {% endblock content %}
+      
+    </div>
+    {% include 'portal/partials/footer.html'   %}
+
+  </div>
+  <!-- jQuery 3 -->
+  <script src="/static/js/jquery/dist/jquery.min.js"></script>
+
+  <!-- AdminLTE App -->
+  <script src="/static/js/dist/js/adminlte.min.js"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Adikanfo News</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'blog/imgs/AdikanfoNewsLogo.png'%}">
+
+  <!-- UltraNews CSS  -->
+  <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/widgets.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/color.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/responsive.css' %}">
+</head>
+</head>
+
+<body>
+  <!-- <div class="scroll-progress primary-bg"></div>
+  <div class="scroll-progress primary-bg"></div>
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="text-center">
+          <div data-loader="spinner"></div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="main-wrap">
+    <!--Offcanvas sidebar-->
+    <aside id="sidebar-wrapper" class="custom-scrollbar offcanvas-sidebar position-right">
+      <button class="off-canvas-close"><i class="ti-close"></i></button>
+
+    </aside>
+    <!-- Main Wrap Start -->
+    <!-- header -->
+    {% include 'blog/partials/header.html'   %}
+    
+    <main class="position-relative">
+      <!--Search Form-->
+      <div class="main-search-form transition-02s">
+          <div class="container">
+              <div class="pt-50 pb-50 main-search-form-cover">
+                  <div class="row mb-20">
+                      <div class="col-12">
+                          <form action="#" method="get" class="search-form position-relative">
+                              <div class="search-form-icon"><i class="ti-search"></i></div>
+                              <label>
+                                  <input type="text" class="search_field"
+                                      placeholder="Enter keywords for search..." value="" name="s">
+                              </label>
+                              <div class="search-switch">
+                                  <ul class="list-inline">
+                                      <li class="list-inline-item"><a href="#" class="active">Articles</a></li>
+                                      <li class="list-inline-item"><a href="#">Authors</a></li>
+                                  </ul>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-12 font-small suggested-area">
+                          <p class="d-inline font-small suggested"><strong>Suggested:</strong></p>
+                          <ul class="list-inline d-inline-block">
+                              <li class="list-inline-item"><a href="#">Covid-19</a></li>
+                              <li class="list-inline-item"><a href="#">Health</a></li>
+                              <li class="list-inline-item"><a href="#">WFH</a></li>
+                              <li class="list-inline-item"><a href="#">UltraNet</a></li>
+                              <li class="list-inline-item"><a href="#">Hospital</a></li>
+                              <li class="list-inline-item"><a href="#">Policies</a></li>
+                              <li class="list-inline-item"><a href="#">Energy</a></li>
+                              <li class="list-inline-item"><a href="#">Business</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% block main %}
+      
+      {% endblock %}
+    </main>
+<!-- footer -->
+{% include 'blog/partials/footer.html'   %}
+  </div>
+  <!-- Main Wrap End-->
+  <div class="dark-mark"></div>
+  <!-- Vendor JS-->
+
+  <script async src="https://static.addtoany.com/menu/page.js"></script> -->
+
+  <!-- Vendor JS-->
+  <script src="{% static 'blog/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery-1.12.4.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/popper.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/bootstrap.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.slicknav.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/slick.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/wow.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/animated.headline.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.magnific-popup.js' %}""></script>
+  <script src="{% static 'blog/js/vendor/jquery.ticker.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.vticker-min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.scrollUp.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.sticky.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/perfect-scrollbar.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/waypoints.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.counterup.min.js' %}"></script>
+  <script src="{% static 'blog/js/vendor/jquery.theia.sticky.js' %}"></script>
+  <!-- UltraNews JS -->
+  <script src="{% static 'blog/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+{% extends 'blog/partials/base.html' %}
+{% block main %}
+
+<!--main content-->
+<div class="main_content sidebar_right pb-50 pt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="entry-header entry-header-1 mb-30">
+                    <div class="entry-meta meta-0 font-small mb-15"><a href="{{post.category.get_category_url}}"><span
+                                class="post-cat background2 color-white">{{post.category.name}}</span></a></div>
+                    <h1 class="post-title">
+                        <a href="#">{{post.title}}</a>
+                    </h1>
+                    <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                        <span class="post-by">By <a href="{{post.author.get_author_url}}">{{post.author}}</a></span>
+                        <span class="post-on has-dot">{{post.date_created|date}}</span>
+                        <span class="time-reading has-dot">8 mins read</span>
+                        <span class="hit-count"><i class="ti-bolt"></i>{{post.view_count}}k Views</span>
+                    </div>
+                    <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                    <div class="single-social-share clearfix ">
+                        <div class="entry-meta meta-1 font-small color-grey float-left mt-10">
+                            <!-- <span class="hit-count"><i class="ti-comment mr-5"></i>{{post.}} comments</span> -->
+                            <span class="hit-count"><i class="ti-heart mr-5"></i>{{post.view_count}} likes</span>
+                            <!-- <span class="hit-count"><i class="ti-star mr-5"></i>8/10</span> -->
+                        </div>
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style"
+                            data-a2a-url="https://adikanfonews.up.railway.app{{post.get_absolute_url}}" data-a2a-title="Adikanfo news">
+                            <ul class="d-inline-block list-inline float-right">
+                                <li class="list-inline-item"><a class="a2a_dd"
+                                        href="https://www.addtoany.com/share"></a></li>
+                                <a class="a2a_button_whatsapp"></a>
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_twitter"></a>
+                                <a class="a2a_button_email"></a>
+                                <a class="a2a_button_telegram"></a>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!--end entry header-->
+                <figure class="single-thumnail">
+                    <div class="featured-slider-1 border-radius-5">
+                        <div class="featured-slider-1-items">
+                            <div class="slider-single">
+                                <img src="{{post.thumbnail.url}}"alt="">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="arrow-cover"></div>
+                    <div class="credit mt-15 font-small color-grey">
+                        <i class="ti-credit-card mr-5"></i><span>Image credit: {{post.author.name}}</span>
+                    </div>
+                </figure>
+                <!-- <div class="single-excerpt">
+                    <p class="font-large">
+                        {{post.description}}
+                    </p>
+                </div> -->
+
+                <div class="entry-main-content">
+                    {{ post.body|safe}}
+                </div>
+                <div class="entry-bottom mt-50 mb-30">
+                    <div class="tags">
+                        {% for tag in post.tags.all %}
+
+                        <a href="" rel="tag">{{tag}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="single-social-share clearfix ">
+                    <div class="entry-meta meta-1 font-small color-grey float-left mt-10">
+                        <!-- <span class="hit-count"><i class="ti-comment mr-5"></i>{{post.}} comments</span> -->
+                        <span class="hit-count"><i class="ti-heart mr-5"></i>{{post.view_count}} likes</span>
+                        <!-- <span class="hit-count"><i class="ti-star mr-5"></i>8/10</span> -->
+                    </div>
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style"
+                    data-a2a-url="https://adikanfonews.up.railway.app{{post.get_absolute_url}}" data-a2a-title="Adikanfo news">
+                    <ul class="d-inline-block list-inline float-right">
+                        <li class="list-inline-item"><a class="a2a_dd"
+                                href="https://www.addtoany.com/share"></a></li>
+                        <a class="a2a_button_whatsapp"></a>
+                        <a class="a2a_button_facebook"></a>
+                        <a class="a2a_button_twitter"></a>
+                        <a class="a2a_button_email"></a>
+                        <a class="a2a_button_telegram"></a>
+                      
+                    </ul>
+                    
+
+
+                </div>
+
+                </div>
+                <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                <!--author box-->
+                <div class="author-bio">
+                    <div class="author-image mb-30">
+                        <a href="{{post.author.get_author_url}}"><img src="{{post.author.imageURL}}" alt=""
+                                class="avatar"></a>
+                    </div>
+                    <div class="author-info">
+                        <h3><span class="vcard author"><span class="fn"><a href="{{post.author.get_author_url}}"
+                                        title="Posts by {{post.author.name|capfirst}}"
+                                        rel="author">{{post.author.name|capfirst}}</a></span></span>
+                        </h3>
+                        <h5>About author</h5>
+                        <div class="author-description">{{post.author.description|safe}}</div>
+                        <a href="{{post.author.get_author_url}}"
+                            tppabs="http://demos.alithemes.com/html/ultranews/demo/author.html"
+                            class="author-bio-link">View all posts</a>
+                        <div class="author-social">
+                            <ul class="author-social-icons">
+                                <li class="author-social-link-facebook"><a href="#" target="_blank"><i
+                                            class="ti-facebook"></i></a></li>
+                                <li class="author-social-link-twitter"><a href="#" target="_blank"><i
+                                            class="ti-twitter-alt"></i></a></li>
+                                <li class="author-social-link-pinterest"><a href="#" target="_blank"><i
+                                            class="ti-pinterest"></i></a></li>
+                                <li class="author-social-link-instagram"><a href="#" target="_blank"><i
+                                            class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--related posts-->
+                <div class="related-posts">
+                    <h3 class="mb-30">Related posts</h3>
+                    <div class="loop-list">
+                        {% for post in related_posts %}
+
+                        <article class="row mb-30">
+                            <div class="col-md-4">
+                                <div class="post-thumb position-relative thumb-overlay">
+                                    <div class="img-hover-slide border-radius-5 position-relative"
+                                        style="background-image: url({{post.thumbnail.url}})"><a class="img-link"
+                                            href="{{post.get_absolute_url}}"></a>
+                                        <span class="top-right-icon background8"><i class="mdi mdi-flash-on"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 align-center-vertical">
+                                <div class="post-content">
+                                    <div class="entry-meta meta-0 font-small mb-15"><a
+                                            href="{{post.category.get_category_url}}"><span
+                                                class="post-cat background2 color-white">{{post.category}}</span></a>
+                                    </div>
+                                    <h4 class="post-title">
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                    </h4>
+                                    <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                                        <span class="post-on"><i
+                                                class="ti-marker-alt"></i>{{post.date_created|date}}</span>
+                                        <span class="time-reading"><i class="ti-timer"></i>10 mins read</span>
+                                        <span class="hit-count"><i class="ti-bolt"></i> {{post.view_count}}k
+                                            Views</span>
+                                    </div>
+                                    <!-- <p class="font-medium">{{post.body|truncatewords:24|safe}}</p> -->
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <!--Comments-->
+                <div class="comments-area">
+                    <!-- <h3 class="mb-30">Comments</h3> -->
+                    {% include 'blog/comments.html'  with url=post.get_absolute_url %}
+               
+                </div>
+        
+            </div>
+            <!--col-lg-8-->
+            <!--Right sidebar-->
+            <div class="col-lg-4 col-md-12 col-sm-12 primary-sidebar sticky-sidebar">
+                <div class="widget-area pl-30">
+                    <!--Widget about-->
+                    <!-- <div class="sidebar-widget widget-about mb-50 pt-30 pr-30 pb-30 pl-30 background12 border-radius-5">
+                        <h5 class="mb-20">Hello, I'm Robert<img class="about-author-img float-right ml-30"
+                                src="{{post.author.imageURL}}" alt=""></h5>
+                        <p class="font-medium">You should write because you love the shape of stories and sentences and
+                            the creation of different words on a page. Writing comes from reading, and reading is the
+                            finest teacher of how to write.</p>
+                        <ul class="header-social-network d-inline-block list-inline color-white mb-20">
+                            <li class="list-inline-item"><a class="social-icon facebook-icon text-xs-center"
+                                    target="_blank" href="#"><i class="ti-facebook"></i></a></li>
+                            <li class="list-inline-item"><a class="social-icon twitter-icon text-xs-center"
+                                    target="_blank" href="#"><i class="ti-twitter-alt"></i></a></li>
+                            <li class="list-inline-item"><a class="social-icon pinterest-icon text-xs-center"
+                                    target="_blank" href="#"><i class="ti-pinterest"></i></a></li>
+                            <li class="list-inline-item"><a class="social-icon instagram-icon text-xs-center"
+                                    target="_blank" href="#"><i class="ti-instagram"></i></a></li>
+                        </ul>
+                        <p>
+                            <a class="readmore-btn font-small text-uppercase font-weight-ultra" href="contact.html"
+                                tppabs="http://demos.alithemes.com/html/ultranews/demo/contact.html">Contact me<i
+                                    class="ti-arrow-right ml-5"></i></a>
+                        </p>
+                    </div> -->
+                    <!--Widget social-->
+                    <div class="sidebar-widget widget-social-network mb-50">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">Follow Us</h5>
+                            <div class="bt-1 border-color-1"></div>
+                        </div>
+                        <div class="social-network">
+                            <div class="follow-us d-flex align-items-center">
+                                <a class="follow-us-facebook clearfix mr-5 mb-10" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-facebook mr-5 v-align-space"></i>
+                                        <i class="ti-facebook mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Facebook</span>
+                                    <span class="social-count counter-number">65</span><span
+                                        class="social-count">K</span>
+                                </a>
+                                <a class="follow-us-twitter clearfix ml-5 mb-10" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-twitter-alt mr-5 v-align-space"></i>
+                                        <i class="ti-twitter-alt mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Twitter</span>
+                                    <span class="social-count counter-number">75</span><span
+                                        class="social-count">K</span>
+                                </a>
+                            </div>
+                            <div class="follow-us d-flex align-items-center">
+                                <a class="follow-us-instagram clearfix mr-5" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-instagram mr-5 v-align-space"></i>
+                                        <i class="ti-instagram mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Instagram</span>
+                                    <span class="social-count counter-number">32</span><span
+                                        class="social-count">K</span>
+                                </a>
+                                <a class="follow-us-youtube clearfix ml-5" href="#" target="_blank">
+                                    <div class="social-icon">
+                                        <i class="ti-youtube mr-5 v-align-space"></i>
+                                        <i class="ti-youtube mr-5 v-align-space nth-2"></i>
+                                    </div>
+                                    <span class="social-name">Youtube</span>
+                                    <span class="social-count counter-number">28</span><span
+                                        class="social-count">K</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Widget latest posts style 1-->
+                    <div class="sidebar-widget widget_alitheme_lastpost mb-50">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">Latest Posts</h5>
+                            <div class="bt-1 border-color-1"></div>
+                        </div>
+                        <div class="row">
+                            {% for post in latest_posts %}
+
+                            <div class="col-md-6 col-sm-6 sm-grid-content mb-30">
+                                <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                    <a href="{{post.get_absolute_url}}"> <img src="{{post.thumbnail.url}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-content media-body">
+                                    <h6 class="post-title mb-10 text-limit-2-row">{{post.title}}</h6>
+                                    <div class="entry-meta meta-1 font-x-small color-grey">
+                                        <span class="post-on">{{post.date_created|date}}</span>
+                                        <span class="hit-count has-dot">{{post.view_count}}k Views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <!--Widget categories-->
+                    <div class="sidebar-widget widget_categories mb-50">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">Categories</h5>
+                            <div class="bt-1 border-color-1"></div>
+                        </div>
+                        <div class="post-block-list post-module-1 post-module-5">
+                            <ul>
+                                {% for cat in categories %}
+                                <li class="cat-item cat-item-2"><a href="/category/{{cat.name}}">{{cat.name}}</a>
+                                    ({{cat.post_count}})</li>
+
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Widget Trending posts style 2-->
+                    <div class="sidebar-widget widget_alitheme_lastpost mb-50">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">Trending Posts</h5>
+                            <div class="bt-1 border-color-1"></div>
+                        </div>
+                        <div class="post-block-list">
+                            <article class="mb-30">
+                                <div class="post-thumb position-relative thumb-overlay mb-30">
+                                    <div class="img-hover-slide border-radius-5 position-relative"
+                                        style="background-image: url({{post.thumbnail.url}})">
+                                        <a class="img-link" href="{{post.get_absolute_url}}"></a>
+                                        <span class="top-right-icon background8"><i
+                                                class="mdi mdi-camera-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <div class="entry-meta meta-0 font-small mb-15">
+                                        <a href="{{post.category.get_category_url}}"><span
+                                                class="post-cat background9 color-white">{{post.category.name}}</span></a>
+                                    </div>
+                                    <h4 class="post-title">
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                    </h4>
+                                    <div class="entry-meta meta-1 font-small color-grey mt-15 mb-15">
+                                        <span class="post-on">{{post.date_created|date}}</span>
+                                        <span class="time-reading has-dot">12 mins read</span>
+                                        <span class="hit-count"><i class="ti-bolt"></i> {{post.view_count}}k
+                                            Views</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End sidebar-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'task/layout.html' %}
+<!-- Titlw -->
+{% block title %}
+    <title>Task: Update</title>
+{% endblock %}
+
+<!-- main content -->
+{% block main %}
+<h2>TASK Update</h2>
+<hr>
+<a href="{% url 'home' %}">Back</a> <br>
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Update">
+</form>
+<br>
+<a href="{% url 'delete' task.id %}">Delete Task</a>
+{% endblock %}

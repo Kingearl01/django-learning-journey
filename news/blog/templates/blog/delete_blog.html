@@ -1,0 +1,14 @@
+{% extends 'blog/layout.html' %}
+
+{% block main %}
+<h3>LIST OF BLOGS</h3>
+<form action="/delete/{{blogs.pk}}/" method="post">
+    {%csrf_token%}
+<p>Are you sure you want to delete {{blogs.title}}</p>
+    <input type="submit" value="Delete">
+    <!-- <a href="{% url 'delete' blogs.pk %}">Delete Blog</a> -->
+    <a href="{%url 'home'%}">NO</a>
+</form>
+{{blogs.pk}}
+    
+{% endblock %}

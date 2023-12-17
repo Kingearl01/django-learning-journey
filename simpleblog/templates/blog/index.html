@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block main %}
+    {% for post in posts %}
+        <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a> by {{post.slug}}</h3> 
+        
+    {% endfor %}
+    <p><a href="{% url 'blog:add-post'%}">Create Post</a></p>
+{% endblock %}

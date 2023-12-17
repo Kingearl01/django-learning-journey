@@ -1,0 +1,27 @@
+<h3>Home</h3>
+{% if request.user.is_authenticated %}
+
+<table>
+    <tr>
+        <th>Index Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Level</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{student.index_number}}</td>
+        <td>{{student.first_name}}</td>
+        <td>{{student.last_name}}</td>
+        <td>{{student.level}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+
+{% endif %}
+
+{% include 'authenticate/task.html'   %}

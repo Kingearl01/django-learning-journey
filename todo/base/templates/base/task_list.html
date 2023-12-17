@@ -1,0 +1,71 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>TODO: LIST</title>
+{% endblock %}
+{% block main %}
+
+
+<div class="card mt-3 bg-primary text-white ">
+    <div class="card-body mx-auto fw-700">
+      <h5 class="card-title">STATUS</h5>
+      <p class="card-text">You have {{count}} incomplete task{{ count|pluralize:"s"}}</p>
+    </div>
+  </div>
+
+<div class="table-responsive mt-5">
+    <a class="btn btn-primary" href="{% url 'create_task' %}"><span>&#43;</span>New Task</a>
+    <hr>
+    <form action="" method="get">
+        <input type="search" name="search-area" value="{{search_area}}">
+        <input class="btn btn-primary" type="submit" value="Search">
+    </form>
+    <hr>
+    <table class="table table-sm table-borderless">
+        <thead class="table-dark">
+            <tr>
+                <th>Task</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody class="table-group-divider">
+
+            {% for task in tasks %}
+
+            <tr>
+                {% if task.complete %}
+                <td style="text-decoration: line-through;" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-circle-fill" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8" />
+                    </svg>
+                    <a style="text-decoration: none;"  href="{% url 'task' task.id%}">{{task.title}}</a>
+                </td>
+                
+                {% else %}
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    </svg>
+                    <a style="text-decoration: none;" href="{% url 'task' task.id%}">{{task.title}}</a>
+                    
+                </td>
+                
+                {% endif %}
+                <!-- <td><a class="btn btn-success" href="{% url 'task' task.id%}">view</a></td> -->
+                <td><a class="btn btn-success" href="{% url 'update_task' task.id%}">Edit</a></td>
+                <td><a style="text-decoration: none;" href="{% url 'delete_task' task.id%}"><span>&#215;</span></a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+<h3>Create New Task</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-primary" type="submit" value="Add Task">
+</form>
+{% endblock %}
+
+
+
